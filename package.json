@@ -1,0 +1,33 @@
+{
+  "name": "xmiddleware",
+  "version": "1.0.0",
+  "description": "Middleware layer for Joomla Restfull interface.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/optikool/XMiddleWare.git"
+  },
+  "author": "Dana Harris <optikool@yahoo.com>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-fileupload": "^0.1.2",
+    "express-validator": "^3.1.3",
+    "form-data": "^2.1.4",
+    "moment": "^2.18.1",
+    "multer": "^1.3.0",
+    "mysql": "^2.13.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.4",
+    "nodemon": "^1.11.0"
+  },
+  "bugs": {
+    "url": "https://github.com/optikool/XMiddleWare/issues"
+  },
+  "homepage": "https://github.com/optikool/XMiddleWare#readme"
+}
