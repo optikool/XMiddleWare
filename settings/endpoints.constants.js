@@ -1,8 +1,8 @@
 'use strict';
 
 const EndpointsSettings = {
+    path: '/maesworld2/index.php?',
     home: {
-        path: '/maesworld2/index.php?',
         query: {
             option: 'com_content',
             view: 'featured',
@@ -10,14 +10,12 @@ const EndpointsSettings = {
         }
     },
     article: {
-        path: '/maesworld2/index.php?',
         query: {
             option: 'com_content',
             view: 'article',
         }
     },
     articleCategory: {
-        path: '/maesworld2/index.php?',
         query: {
             option: 'com_content',
             view: 'category',
@@ -27,7 +25,6 @@ const EndpointsSettings = {
     gallery: '',
     galleryCategory: '',
     galleryMain: {
-        path: '/maesworld2/index.php?',
         query: {
             option: 'com_xgallery',
             view: 'main',

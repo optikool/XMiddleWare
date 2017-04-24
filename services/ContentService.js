@@ -15,7 +15,7 @@ module.exports = class ContentService {
             Itemid: req.params.itemid
         };
 
-        const endpoint = settings.articleCategory.path + querystring.stringify(Object.assign(settings.articleCategory.query, query));
+        const endpoint = settings.path + querystring.stringify(Object.assign(settings.articleCategory.query, query));
 
         const handleResponse = (response, body) => {
             console.log('Received response');
@@ -39,7 +39,7 @@ module.exports = class ContentService {
             Itemid: req.params.itemid
         };
 
-        const endpoint = settings.article.path + querystring.stringify(Object.assign(settings.article.query, query));
+        const endpoint = settings.path + querystring.stringify(Object.assign(settings.article.query, query));
 
         const handleResponse = (response, body) => {
             console.log('Received response');

@@ -10,7 +10,7 @@ const settings = require('../settings/endpoints.constants');
 
 module.exports = class HomeService {
     static getHomeContent(req, res, next) {
-        const endpoint = settings.home.path + querystring.stringify(settings.home.query);
+        const endpoint = settings.path + querystring.stringify(settings.home.query);
 
         const handleResponse = (response, body) => {
             console.log('Received response');
