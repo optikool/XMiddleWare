@@ -22,8 +22,18 @@ const EndpointsSettings = {
             layout: 'blog'
         }
     },
-    gallery: '',
-    galleryCategory: '',
+    gallery: {
+        query: {
+            option: 'com_xgallery',
+            view: 'single'
+        }
+    },
+    galleryCategory: {
+        query: {
+            option: 'com_xgallery',
+            view: 'category'
+        }
+    },
     galleryMain: {
         query: {
             option: 'com_xgallery',

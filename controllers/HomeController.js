@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const service = require(__base + '/services').HomeService;
+const service = require('../services').HomeService;
 
 router.get('/', service.getHomeContent);
 
