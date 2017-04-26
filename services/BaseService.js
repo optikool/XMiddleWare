@@ -8,13 +8,17 @@ const settings = require('../settings').ServerSettings;
 const router = express.Router();
 
 module.exports = class BaseService {
-    static getData(path, callback) {
+    static getData(path, callback, headers) {
         const options = {
             hostname: settings.host,
             port: 80,
             path: path,
             method: 'GET'
         };
+
+        if (headers) {
+            options.headers = headers;
+        }
 
         let body = [];
 
