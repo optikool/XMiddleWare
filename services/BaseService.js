@@ -29,6 +29,44 @@ module.exports = class BaseService {
             console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
             response.setEncoding('utf8');
             response.on('data', (chunk) => {
+                console.log(`BODY: ${chunk}`);
+                body.push(chunk);
+            });
+            response.on('end', () => {
+                callback(response, body.concat());
+            });
+        });
+
+        request.on('error', (e) => {
+            console.error(`problem with request: ${e.message}`);
+            callback(e);
+        });
+
+        // write data to request body
+        request.end();
+    }
+
+    static sendData(path, data, callback, headers) {
+        const options = {
+            hostname: settings.host,
+            port: 80,
+            path: path,
+            method: 'GET'
+        };
+
+        if (headers) {
+            options.headers = headers;
+        }
+
+        let body = [];
+
+        console.log('options: ', options);
+
+        const request = http.request(options, (response) => {
+            console.log(`STATUS: ${response.statusCode}`);
+            console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
+            response.setEncoding('utf8');
+            response.on('data', (chunk) => {
                 //console.log(`BODY: ${chunk}`);
                 body.push(chunk);
             });
@@ -45,11 +83,7 @@ module.exports = class BaseService {
         });
 
         // write data to request body
-        //request.write(postData);
+        request.write(data);
         request.end();
-    }
-
-    static sendData(endpoint, query, callback) {
-
     }
 }

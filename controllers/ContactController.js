@@ -5,6 +5,6 @@ const router = express.Router();
 
 const service = require('../services').ContactService;
 
-//router.get('/', service.getHomeContent);
+router.get('/', service.sendMessage);
 
 module.exports = router;

@@ -41,8 +41,20 @@ const EndpointsSettings = {
             Itemid: 112
         }
     },
-    search: '',
-    contact: ''
+    search: {
+        query: {
+            option: 'com_search',
+            searchphrase: 'all',
+            Itemid: 134
+        }
+    },
+    contact: {
+        query: {
+            option: 'com_contact',
+            task: 'contact.submit',
+            id: 1
+        }
+    }
 };
 
 module.exports = EndpointsSettings;
