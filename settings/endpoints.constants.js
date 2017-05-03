@@ -53,6 +53,12 @@ const EndpointsSettings = {
             option: 'com_contact',
             task: 'contact.submit',
             id: 1
+        },
+        get: {
+            option: 'com_contact',
+            view: 'contact',
+            id: 1,
+            Itemid: 133
         }
     }
 };

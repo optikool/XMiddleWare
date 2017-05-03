@@ -9,6 +9,25 @@ const router = express.Router();
 const settings = require('../settings/endpoints.constants');
 
 module.exports = class ContactService {
+    static getContact(req, res, next) {
+        const headers = req.headers;
+        const endpoint = settings.path + querystring.stringify(settings.contact.get);
+
+        const handleResponse = (response, body) => {
+            console.log('Received response');
+            console.log(response);
+            console.log(body);
+
+            if (response.statusCode === 200) {
+                res.status(response.statusCode).json(body);
+            } else {
+                res.status(response.statusCode).json(body);
+            }
+        };
+
+        BaseService.getData(endpoint, handleResponse, headers);
+    }
+
     static sendMessage(req, res, next) {
         let query = {
             'jform[contact_name]': req.body.name,
