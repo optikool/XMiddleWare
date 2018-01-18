@@ -15,12 +15,12 @@ module.exports = class HomeService {
         const handleResponse = (response, body) => {
             console.log('Received response');
             console.log(response);
-            console.log(body);
+            console.log(JSON.parse(body));
 
             if (response.statusCode === 200) {
-                res.status(response.statusCode).json(body);
+                res.status(response.statusCode).json(JSON.parse(body));
             } else {
-                res.status(response.statusCode).json(body);
+                res.status(response.statusCode).json(JSON.parse(body));
             }
         };
 

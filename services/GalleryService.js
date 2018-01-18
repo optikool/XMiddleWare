@@ -15,9 +15,9 @@ module.exports = class GalleryService {
 
         const handleResponse = (response, body) => {
             if (response.statusCode === 200) {
-                res.status(response.statusCode).json(body);
+                res.status(response.statusCode).json(JSON.parse(body));
             } else {
-                res.status(response.statusCode).json(body);
+                res.status(response.statusCode).json(JSON.parse(body));
             }
         };
 
@@ -39,9 +39,9 @@ module.exports = class GalleryService {
             console.log(body);
 
             if (response.statusCode === 200) {
-                res.status(response.statusCode).json(body);
+                res.status(response.statusCode).json(JSON.parse(body));
             } else {
-                res.status(response.statusCode).json(body);
+                res.status(response.statusCode).json(JSON.parse(body));
             }
         };
 
@@ -64,9 +64,34 @@ module.exports = class GalleryService {
             console.log(body);
 
             if (response.statusCode === 200) {
-                res.status(response.statusCode).json(body);
+                res.status(response.statusCode).json(JSON.parse(body));
             } else {
-                res.status(response.statusCode).json(body);
+                res.status(response.statusCode).json(JSON.parse(body));
+            }
+        };
+
+        BaseService.getData(endpoint, handleResponse, headers);
+    }
+
+    static getRandomGallery(req, res, next) {
+        // let query = {
+        //     id: req.params.id,
+        //     catid: req.params.catid,
+        //     Itemid: req.params.itemid
+        // };
+
+        const headers = req.headers;
+        const endpoint = settings.path + querystring.stringify(settings.galleryRandom.query);
+
+        const handleResponse = (response, body) => {
+            console.log('Received response');
+            console.log(response);
+            console.log(body);
+
+            if (response.statusCode === 200) {
+                res.status(response.statusCode).json(JSON.parse(body));
+            } else {
+                res.status(response.statusCode).json(JSON.parse(body));
             }
         };
 

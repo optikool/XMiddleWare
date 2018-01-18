@@ -8,5 +8,6 @@ const service = require('../services').GalleryService;
 router.get('/', service.getAll);
 router.get('/:id/:itemid', service.getGalleries);
 router.get('/:id/:catid/:itemid', service.getGallery);
+router.get('/random', service.getRandomGallery);
 
 module.exports = router;

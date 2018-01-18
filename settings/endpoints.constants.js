@@ -41,6 +41,34 @@ const EndpointsSettings = {
             Itemid: 112
         }
     },
+    galleryRandom: {
+        query: {
+            option: 'com_xgallery',
+            view: 'single',
+            id: 6,
+            catid: 25,
+            Itemid: 136
+        }
+    },
+    movie: {
+        query: {
+            option: 'com_xmovie',
+            view: 'single'
+        }
+    },
+    movieCategory: {
+        query: {
+            option: 'com_xmovie',
+            view: 'category'
+        }
+    },
+    movieMain: {
+        query: {
+            option: 'com_xmovie',
+            view: 'main',
+            Itemid: 112
+        }
+    },
     search: {
         query: {
             option: 'com_search',
