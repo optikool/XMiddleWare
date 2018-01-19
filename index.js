@@ -58,3 +58,7 @@ app.use(require('./controllers'));
 
 console.log(`Server started on host ${__settings.host}, port ${__settings.port}...`);
 app.listen(__settings.port);
+
+process.on('uncaughtException', function(err) {
+    console.log('Caught exception: ', err);
+});
