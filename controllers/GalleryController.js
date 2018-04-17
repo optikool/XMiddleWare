@@ -5,9 +5,12 @@ const router = express.Router();
 
 const service = require('../services').GalleryService;
 
-router.get('/', service.getAll);
-router.get('/:id/:itemid', service.getGalleries);
-router.get('/:id/:catid/:itemid', service.getGallery);
-router.get('/random', service.getRandomGallery);
+router.get('/:limit', service.getAll);
+router.get('/main/:limit', service.getAll);
+router.get('/main/random/:limit', service.getRandomGallery);
+router.get('/main/popular/:limit', service.getPopularGallery);
+router.get('/category/:id/:itemid', service.getGalleries);
+router.get('/single/random', service.getRandomCollection);
+router.get('/single/:id/:catid/:itemid', service.getCollection);
 
 module.exports = router;

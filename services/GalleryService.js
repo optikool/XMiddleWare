@@ -10,7 +10,11 @@ const settings = require('../settings/endpoints.constants');
 
 module.exports = class GalleryService {
     static getAll(req, res, next) {
-        const endpoint = settings.path + querystring.stringify(settings.galleryMain.query);
+        let query = {
+            limit: req.params.limit
+        };
+
+        const endpoint = settings.path + querystring.stringify(Object.assign(settings.galleryMain.query, query));
         const headers = req.headers;
 
         const handleResponse = (response, body) => {
@@ -32,12 +36,7 @@ module.exports = class GalleryService {
 
         const headers = req.headers;
         const endpoint = settings.path + querystring.stringify(Object.assign(settings.galleryCategory.query, query));
-
         const handleResponse = (response, body) => {
-            console.log('Received response');
-            console.log(response);
-            console.log(body);
-
             if (response.statusCode === 200) {
                 res.status(response.statusCode).json(JSON.parse(body));
             } else {
@@ -56,13 +55,8 @@ module.exports = class GalleryService {
         };
 
         const headers = req.headers;
-        const endpoint = settings.path + querystring.stringify(Object.assign(settings.gallery.query, query));
-
+        const endpoint = settings.path + querystring.stringify(Object.assign(settings.collection.query, query));
         const handleResponse = (response, body) => {
-            console.log('Received response');
-            console.log(response);
-            console.log(body);
-
             if (response.statusCode === 200) {
                 res.status(response.statusCode).json(JSON.parse(body));
             } else {
@@ -74,20 +68,13 @@ module.exports = class GalleryService {
     }
 
     static getRandomGallery(req, res, next) {
-        // let query = {
-        //     id: req.params.id,
-        //     catid: req.params.catid,
-        //     Itemid: req.params.itemid
-        // };
+        let query = {
+            limit: req.params.limit
+        };
 
         const headers = req.headers;
-        const endpoint = settings.path + querystring.stringify(settings.galleryRandom.query);
-
+        const endpoint = settings.path + querystring.stringify(Object.assign(settings.galleryRandom.query, query));
         const handleResponse = (response, body) => {
-            console.log('Received response');
-            console.log(response);
-            console.log(body);
-
             if (response.statusCode === 200) {
                 res.status(response.statusCode).json(JSON.parse(body));
             } else {
@@ -96,5 +83,62 @@ module.exports = class GalleryService {
         };
 
         BaseService.getData(endpoint, handleResponse, headers);
+    }
+
+    static getCollection(req, res, next) {
+        let query = {
+            id: req.params.id,
+            catid: req.params.catid,
+            Itemid: req.params.itemid
+        };;
+
+        const headers = req.headers;
+        const endpoint = settings.path + querystring.stringify(Object.assign(settings.collection.query, query));
+        const handleResponse = (response, body) => {
+            if (response.statusCode === 200) {
+                res.status(response.statusCode).json(JSON.parse(body));
+            } else {
+                res.status(response.statusCode).json(JSON.parse(body));
+            }
+        };
+
+        BaseService.getData(endpoint, handleResponse, headers);
+    }
+
+    static getPopularGallery(req, res, next) {
+        let query = {
+            limit: req.params.limit
+        };
+
+        const headers = req.headers;
+        const endpoint = settings.path + querystring.stringify(Object.assign(settings.galleryPopular.query, query));
+        const handleResponse = (response, body) => {
+            if (response.statusCode === 200) {
+                res.status(response.statusCode).json(JSON.parse(body));
+            } else {
+                res.status(response.statusCode).json(JSON.parse(body));
+            }
+        };
+
+        BaseService.getData(endpoint, handleResponse, headers);
+    }
+
+    static getRandomCollection(req, res, next) {
+        let query = {
+            sort: 'random'
+        };
+
+        const headers = req.headers;
+        const endpoint = settings.path + querystring.stringify(Object.assign(settings.collection.query, query));
+        const handleResponse = (response, body) => {
+            if (response.statusCode === 200) {
+                res.status(response.statusCode).json(JSON.parse(body));
+            } else {
+                res.status(response.statusCode).json(JSON.parse(body));
+            }
+        };
+
+        BaseService.getData(endpoint, handleResponse, headers);
+
     }
 };

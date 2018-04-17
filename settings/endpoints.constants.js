@@ -1,7 +1,7 @@
 'use strict';
 
 const EndpointsSettings = {
-    path: '/maesworld2/index.php?',
+    path: '/index.php?',
     home: {
         query: {
             option: 'com_content',
@@ -22,7 +22,7 @@ const EndpointsSettings = {
             layout: 'blog'
         }
     },
-    gallery: {
+    collection: {
         query: {
             option: 'com_xgallery',
             view: 'single'
@@ -38,16 +38,25 @@ const EndpointsSettings = {
         query: {
             option: 'com_xgallery',
             view: 'main',
-            Itemid: 112
+            Itemid: 117
         }
     },
     galleryRandom: {
         query: {
             option: 'com_xgallery',
-            view: 'single',
-            id: 6,
-            catid: 25,
-            Itemid: 136
+            view: 'main',
+            sort: 'random',
+            limitstart: 0,
+            Itemid: 117
+        }
+    },
+    galleryPopular: {
+        query: {
+            option: 'com_xgallery',
+            view: 'main',
+            sort: 'popular',
+            limitstart: 0,
+            Itemid: 117
         }
     },
     movie: {

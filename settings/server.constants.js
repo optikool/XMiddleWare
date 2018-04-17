@@ -1,8 +1,8 @@
 'use strict';
 
 const ServerSettings = {
-    host: 'localhost',
-    path: '/maesworld2',
+    host: 'jm.maesworld.com',
+    path: '/maesworld-ng',
     port: 3021
 };
 

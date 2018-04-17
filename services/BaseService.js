@@ -21,18 +21,16 @@ module.exports = class BaseService {
         }
 
         let body = [];
-
         console.log('options: ', options);
-
         const request = http.request(options, (response) => {
-            console.log(`STATUS: ${response.statusCode}`);
-            console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
+            // console.log(`STATUS: ${response.statusCode}`);
+            // console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
             response.setEncoding('utf8');
             response.on('data', (chunk) => {
-                console.log(`BODY: ${chunk}`);
                 body.push(chunk);
             });
             response.on('end', () => {
+                console.log('No more data in response. ', response);
                 callback(response, body.concat());
             });
         });
@@ -49,7 +47,7 @@ module.exports = class BaseService {
     static sendData(path, data, callback, headers) {
         const options = {
             hostname: settings.host,
-            port: 80,
+            port: 440,
             path: path,
             method: 'GET'
         };
@@ -59,19 +57,17 @@ module.exports = class BaseService {
         }
 
         let body = [];
-
         console.log('options: ', options);
-
         const request = http.request(options, (response) => {
-            console.log(`STATUS: ${response.statusCode}`);
-            console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
+            // console.log(`STATUS: ${response.statusCode}`);
+            // console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
             response.setEncoding('utf8');
             response.on('data', (chunk) => {
                 //console.log(`BODY: ${chunk}`);
                 body.push(chunk);
             });
             response.on('end', () => {
-                //console.log('No more data in response. ', response);
+                console.log('No more data in response. ', response);
                 callback(response, body.concat());
             });
         });

@@ -13,10 +13,6 @@ module.exports = class HomeService {
         const endpoint = settings.path + querystring.stringify(settings.home.query);
 
         const handleResponse = (response, body) => {
-            console.log('Received response');
-            console.log(response);
-            console.log(JSON.parse(body));
-
             if (response.statusCode === 200) {
                 res.status(response.statusCode).json(JSON.parse(body));
             } else {
