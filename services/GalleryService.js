@@ -11,7 +11,7 @@ const settings = require('../settings/endpoints.constants');
 module.exports = class GalleryService {
     static getAll(req, res, next) {
         let query = {
-            limit: req.params.limit
+            limit: Number.parseInt(req.params.limit)
         };
 
         const endpoint = settings.path + querystring.stringify(Object.assign(settings.galleryMain.query, query));
@@ -30,12 +30,13 @@ module.exports = class GalleryService {
 
     static getGalleries(req, res, next) {
         let query = {
-            id: req.params.id,
-            Itemid: req.params.itemid
+            id: Number.parseInt(req.params.id),
+            Itemid: Number.parseInt(req.params.itemid)
         };
 
         const headers = req.headers;
         const endpoint = settings.path + querystring.stringify(Object.assign(settings.galleryCategory.query, query));
+
         const handleResponse = (response, body) => {
             if (response.statusCode === 200) {
                 res.status(response.statusCode).json(JSON.parse(body));
@@ -49,13 +50,14 @@ module.exports = class GalleryService {
 
     static getGallery(req, res, next) {
         let query = {
-            id: req.params.id,
-            catid: req.params.catid,
-            Itemid: req.params.itemid
+            id: Number.parseInt(req.params.id),
+            catid: Number.parseInt(req.params.catid),
+            Itemid: Number.parseInt(req.params.itemid)
         };
 
         const headers = req.headers;
         const endpoint = settings.path + querystring.stringify(Object.assign(settings.collection.query, query));
+
         const handleResponse = (response, body) => {
             if (response.statusCode === 200) {
                 res.status(response.statusCode).json(JSON.parse(body));
@@ -69,11 +71,12 @@ module.exports = class GalleryService {
 
     static getRandomGallery(req, res, next) {
         let query = {
-            limit: req.params.limit
+            limit: Number.parseInt(req.params.limit)
         };
 
         const headers = req.headers;
         const endpoint = settings.path + querystring.stringify(Object.assign(settings.galleryRandom.query, query));
+
         const handleResponse = (response, body) => {
             if (response.statusCode === 200) {
                 res.status(response.statusCode).json(JSON.parse(body));
@@ -87,13 +90,14 @@ module.exports = class GalleryService {
 
     static getCollection(req, res, next) {
         let query = {
-            id: req.params.id,
-            catid: req.params.catid,
-            Itemid: req.params.itemid
+            id: Number.parseInt(req.params.id),
+            catid: Number.parseInt(req.params.catid),
+            Itemid: Number.parseInt(req.params.itemid)
         };;
 
         const headers = req.headers;
         const endpoint = settings.path + querystring.stringify(Object.assign(settings.collection.query, query));
+
         const handleResponse = (response, body) => {
             if (response.statusCode === 200) {
                 res.status(response.statusCode).json(JSON.parse(body));
@@ -107,11 +111,12 @@ module.exports = class GalleryService {
 
     static getPopularGallery(req, res, next) {
         let query = {
-            limit: req.params.limit
+            limit: Number.parseInt(req.params.limit)
         };
 
         const headers = req.headers;
         const endpoint = settings.path + querystring.stringify(Object.assign(settings.galleryPopular.query, query));
+
         const handleResponse = (response, body) => {
             if (response.statusCode === 200) {
                 res.status(response.statusCode).json(JSON.parse(body));
@@ -130,6 +135,7 @@ module.exports = class GalleryService {
 
         const headers = req.headers;
         const endpoint = settings.path + querystring.stringify(Object.assign(settings.collection.query, query));
+
         const handleResponse = (response, body) => {
             if (response.statusCode === 200) {
                 res.status(response.statusCode).json(JSON.parse(body));

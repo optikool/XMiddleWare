@@ -10,11 +10,12 @@ const router = express.Router();
 module.exports = class BaseService {
     static getData(path, callback, headers) {
         const options = {
-            hostname: settings.host,
+            host: settings.host,
             port: 80,
             path: path,
             method: 'GET'
         };
+		const url = 'http://' + settings.host + path;
 
         if (headers) {
             options.headers = headers;
@@ -22,9 +23,9 @@ module.exports = class BaseService {
 
         let body = [];
         console.log('options: ', options);
-        const request = http.request(options, (response) => {
+        const request = http.request(url, (response) => {
             // console.log(`STATUS: ${response.statusCode}`);
-            // console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
+            console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
             response.setEncoding('utf8');
             response.on('data', (chunk) => {
                 body.push(chunk);
@@ -47,10 +48,11 @@ module.exports = class BaseService {
     static sendData(path, data, callback, headers) {
         const options = {
             hostname: settings.host,
-            port: 440,
+            port: 80,
             path: path,
             method: 'GET'
         };
+		const url = 'http://' + settings.host + path;
 
         if (headers) {
             options.headers = headers;

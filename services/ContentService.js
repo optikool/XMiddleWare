@@ -11,8 +11,8 @@ const settings = require('../settings/endpoints.constants');
 module.exports = class ContentService {
     static getContent(req, res, next) {
         let query = {
-            id: req.params.id,
-            Itemid: req.params.itemid
+            id: Number.parseInt(req.params.id),
+            Itemid: Number.parseInt(req.params.itemid)
         };
 
         const endpoint = settings.path + querystring.stringify(Object.assign(settings.articleCategory.query, query));
@@ -34,9 +34,9 @@ module.exports = class ContentService {
 
     static getArticle(req, res, next) {
         let query = {
-            id: req.params.id,
-            catid: req.params.catid,
-            Itemid: req.params.itemid
+            id: Number.parseInt(req.params.id),
+            catid: Number.parseInt(req.params.catid),
+            Itemid: Number.parseInt(req.params.itemid)
         };
 
         const endpoint = settings.path + querystring.stringify(Object.assign(settings.article.query, query));
