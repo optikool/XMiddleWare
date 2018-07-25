@@ -75,7 +75,25 @@ const EndpointsSettings = {
         query: {
             option: 'com_xmovie',
             view: 'main',
-            Itemid: 112
+            Itemid: 137
+        }
+    },
+    movieRandom: {
+        query: {
+            option: 'com_xmovie',
+            view: 'main',
+            sort: 'random',
+            limitstart: 0,
+            Itemid: 137
+        }
+    },
+    moviePopular: {
+        query: {
+            option: 'com_xmovie',
+            view: 'main',
+            sort: 'popular',
+            limitstart: 0,
+            Itemid: 137
         }
     },
     search: {
