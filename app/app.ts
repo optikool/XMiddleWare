@@ -1,17 +1,20 @@
 /*jshint esversion: 6 */
 'use strict';
 
-const express = require('express');
-const bodyParser = require('body-parser');
+import express = require('express');
+import bodyParser = require('body-parser');
+import morgan = require('morgan');
+import path = require('path');
 const expressValidator = require('express-validator');
-const fileUpload = require('express-fileupload');
+const  winston = require('./config/winston');
+// const fileUpload = require('express-fileupload');
 
-global.__base = __dirname;
-global.__settings = require('./settings').ServerSettings;
+const base = __dirname;
+const settings = require('./settings').ServerSettings;
 
 const options = {
     customValidators: {
-        isImage: function(value, filename) {
+        isImage: function(value: string, filename: string) {
             switch (filename.toLowerCase()) {
                 case 'image/jpeg':
                 case 'image/png':
@@ -24,17 +27,19 @@ const options = {
     }
 };
 
-const app = express();
+const app: express.Application = express();
 
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressValidator(options));
-app.use(fileUpload());
+app.use(morgan('combined', { stream: winston.stream }));
+// app.use(fileUpload());
 
 // Add headers
-app.use(function(req, res, next) {
+app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
 
     // Website you wish to allow to connect
     // res.setHeader('Access-Control-Allow-Origin', 'http://192.168.1.71:4200');
@@ -48,18 +53,17 @@ app.use(function(req, res, next) {
 
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
 
     // Pass to next layer of middleware
     next();
 });
 
+app.use(require('./routes'));
 
-app.use(require('./controllers'));
+console.log(`Server started on host ${settings.host}, port ${settings.port}...`);
+app.listen(settings.port);
 
-console.log(`Server started on host ${__settings.host}, port ${__settings.port}...`);
-app.listen(__settings.port);
-
-process.on('uncaughtException', function(err) {
+process.on('uncaughtException', (err) => {
     console.log('Caught exception: ', err);
 });

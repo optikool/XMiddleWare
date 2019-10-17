@@ -1,9 +1,9 @@
 'use strict';
 
-const express = require('express');
-const router = express.Router();
+import express = require('express');
+const router: express.Router = express.Router();
 
-const service = require('../services').MovieService;
+const service = require('../../services').MovieService;
 
 router.get('/:limit', service.getAll);
 router.get('/main/:limit', service.getAll);

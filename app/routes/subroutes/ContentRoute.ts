@@ -1,9 +1,9 @@
 'use strict';
 
-const express = require('express');
-const router = express.Router();
+import express = require('express');
+const router: express.Router = express.Router();
 
-const service = require('../services').ContentService;
+const service = require('../../services').ContentService;
 
 router.get('/:id/:itemid', service.getContent);
 router.get('/:id/:catid/:itemid', service.getArticle);

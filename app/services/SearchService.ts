@@ -1,6 +1,6 @@
 'use strict';
 
-const express = require('express');
+import express = require('express');
 const BaseService = new require('./BaseService');
 const querystring = require('querystring');
 
